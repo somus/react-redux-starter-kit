@@ -1,0 +1,27 @@
+import reducer, { initialState, SOME_ACTION, actions } from 'redux/modules/{{ camelCase name }}';
+
+describe('(Module) {{ camelCase name }} Actions', function () {
+  it('Should create "someAction"', function () {
+    const expectedAction = {
+      type: SOME_ACTION,
+      payload: undefined
+    };
+    expect(actions.someAction()).to.deep.equal(expectedAction);
+  });
+});
+
+describe('(Module) {{ camelCase name }} Reducers', function () {
+  it('Should return the initial state', () => {
+    expect(
+      reducer(undefined, {})
+    ).to.deep.equal(initialState);
+  });
+
+  it('Should handle SOME_ACTION', function () {
+    expect(
+      reducer(initialState, {
+        type: SOME_ACTION
+      })
+    ).to.deep.equal(initialState);
+  });
+});

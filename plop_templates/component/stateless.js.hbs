@@ -1,0 +1,26 @@
+{{#if wantSCSS}}
+import styles from './{{ properCase name }}.scss';
+{{/if}}
+
+/**
+ * {{ sentenceCase description }}
+ *
+ * @returns {XML}
+ * @constructor
+ */
+function {{ properCase name }} () {
+  return (
+    {{#if wantSCSS}}
+    <div style={styles['{{ camelCase name }}']}>
+    {{else}}
+    <div>
+    {{/if}}
+    </div>
+  );
+}
+
+// PropTypes
+{{ properCase name }}.propTypes = {
+};
+
+export default {{ properCase name }};

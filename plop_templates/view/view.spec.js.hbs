@@ -19,7 +19,7 @@ function shallowRenderWithProps (props = {}) {
   return shallowRender(<{{ properCase name }}View {...props} />);
 }
 
-describe('(View) Home', function () {
+describe('(View) {{ properCase name }}', function () {
   {{#if wantActions}}
   let _component, _rendered, _props, _spies;
   {{else}}

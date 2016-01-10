@@ -1,0 +1,27 @@
+{{#if wantSCSS}}
+import styles from './{{ properCase name }}View.scss';
+{{/if}}
+
+/**
+ * {{ sentenceCase description }}
+ *
+ * @exports {{ properCase name }}
+ * @extends React.Component
+ */
+export class {{ properCase name }} extends React.Component {
+  /**
+   * @return {ReactElement} React.Component
+  */
+  render () {
+    return (
+      {{#if wantSCSS}}
+      <div style={styles['{{ camelCase name }}']}>
+      {{else}}
+      <div>
+      {{/if}}
+      </div>
+    );
+  }
+}
+
+export default {{ properCase name }};

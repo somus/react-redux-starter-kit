@@ -1,0 +1,30 @@
+import TestUtils from 'react-addons-test-utils';
+import { {{ properCase name }} } from '{{ path }}/{{ properCase name }}';
+
+function shallowRender (component) {
+  const renderer = TestUtils.createRenderer();
+
+  renderer.render(component);
+  return renderer.getRenderOutput();
+}
+
+function renderWithProps (props = {}) {
+  return TestUtils.renderIntoDocument(<{{ properCase name }} {...props} />);
+}
+
+function shallowRenderWithProps (props = {}) {
+  return shallowRender(<{{ properCase name }} {...props} />);
+}
+
+describe('(Component) {{ properCase name }}', function () {
+  let _component, _rendered, _props;
+
+  beforeEach(function () {
+    _spies = {};
+    _props = {
+    };
+
+    _component = shallowRenderWithProps(_props);
+    _rendered = renderWithProps(_props);
+  });
+});

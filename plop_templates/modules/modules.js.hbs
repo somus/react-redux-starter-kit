@@ -1,0 +1,24 @@
+import { createAction, handleActions } from 'redux-actions';
+
+// ------------------------------------
+// Constants
+// ------------------------------------
+export const SOME_ACTION = 'SOME_ACTION';
+
+// ------------------------------------
+// Actions
+// ------------------------------------
+export const someAction = createAction(SOME_ACTION, () => {});
+
+export const actions = {
+  someAction
+};
+
+// ------------------------------------
+// Reducer
+// ------------------------------------
+export const initialState = {};
+
+export default handleActions({
+  [SOME_ACTION]: (state) => state
+}, initialState);
