@@ -1,17 +1,28 @@
-import React from 'react'
-import { connect } from 'react-redux'
-import { Link } from 'react-router'
-import { actions as counterActions } from '../../redux/modules/counter'
-import classes from './HomeView.scss'
+import { connect } from 'react-redux';
+import { Link } from 'react-router';
+import { actions as counterActions } from 'redux/modules/counter';
+import classes from './HomeView.scss';
 
 // We define mapStateToProps where we'd normally use
 // the @connect decorator so the data requirements are clear upfront, but then
 // export the decorated component after the main class definition so
 // the component can be tested w/ and w/o being connected.
 // See: http://rackt.github.io/redux/docs/recipes/WritingTests.html
+/**
+ * Function to map store values as props
+ *
+ * @param {object} state
+ */
 const mapStateToProps = (state) => ({
   counter: state.counter
-})
+});
+
+/**
+ * Home Page View Component
+ *
+ * @exports HomeView
+ * @extends React.Component
+ */
 export class HomeView extends React.Component {
   static propTypes = {
     counter: React.PropTypes.number.isRequired,
@@ -19,6 +30,9 @@ export class HomeView extends React.Component {
     increment: React.PropTypes.func.isRequired
   };
 
+  /**
+   * @return {ReactElement} React.Component
+   */
   render () {
     return (
       <div className='container text-center'>
@@ -38,8 +52,8 @@ export class HomeView extends React.Component {
         <hr />
         <Link to='/404'>Go to 404 Page</Link>
       </div>
-    )
+    );
   }
 }
 
-export default connect(mapStateToProps, counterActions)(HomeView)
+export default connect(mapStateToProps, counterActions)(HomeView);

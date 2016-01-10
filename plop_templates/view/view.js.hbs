@@ -1,0 +1,49 @@
+{{#if connectRedux}}
+import { connect } from 'react-redux';
+{{/if}}
+{{#if wantSCSS}}
+import styles from './{{ properCase name }}View.scss';
+{{/if}}
+{{#if wantActions}}
+import { actions as {{ camelCase store }}Actions } from 'redux/modules/{{ camelCase store }}';
+{{/if}}
+{{#xif 'this.wantActions || this.connectRedux' }}
+
+{{/xif}}
+{{#if connectRedux}}
+/**
+ * Function to map store values as props
+ *
+ * @param {object} state
+ */
+const mapStateToProps = (state) => ({
+});
+
+{{/if}}
+/**
+ * {{ sentenceCase description }}
+ *
+ * @exports {{ properCase name }}View
+ * @extends React.Component
+ */
+export class {{ properCase name }}View extends React.Component {
+  /**
+   * @return {ReactElement} React.Component
+  */
+  render () {
+    return (
+      {{#if wantSCSS}}
+      <div className='container' style={styles['{{ camelCase name }}Container']}>
+      {{else}}
+      <div className='container'>
+      {{/if}}
+      </div>
+    );
+  }
+}
+
+{{#if wantActions}}
+export default connect(mapStateToProps, {{ camelCase store }}Actions)({{ properCase name }}View);
+{{else}}
+export default connect(mapStateToProps)({{ properCase name }}View);
+{{/if}}

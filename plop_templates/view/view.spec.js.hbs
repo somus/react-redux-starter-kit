@@ -1,0 +1,44 @@
+import TestUtils from 'react-addons-test-utils';
+{{#if wantActions}}
+import { bindActionCreators } from 'redux';
+{{/if}}
+import { {{ properCase name }}View } from 'views/{{ properCase name }}View';
+
+function shallowRender (component) {
+  const renderer = TestUtils.createRenderer();
+
+  renderer.render(component);
+  return renderer.getRenderOutput();
+}
+
+function renderWithProps (props = {}) {
+  return TestUtils.renderIntoDocument(<{{ properCase name }}View {...props} />);
+}
+
+function shallowRenderWithProps (props = {}) {
+  return shallowRender(<{{ properCase name }}View {...props} />);
+}
+
+describe('(View) Home', function () {
+  {{#if wantActions}}
+  let _component, _rendered, _props, _spies;
+  {{else}}
+  let _component, _rendered, _props;
+  {{/if}}
+
+  beforeEach(function () {
+    _spies = {};
+    {{#if wantActions}}
+    _props = {
+      ...bindActionCreators({
+      }, _spies.dispatch = sinon.spy())
+    };
+    {{else}}
+    _props = {
+    };
+    {{/if}}
+
+    _component = shallowRenderWithProps(_props);
+    _rendered = renderWithProps(_props);
+  });
+});

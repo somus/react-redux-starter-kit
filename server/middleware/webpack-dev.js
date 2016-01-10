@@ -1,13 +1,13 @@
-import WebpackDevMiddleware from 'webpack-dev-middleware'
-import applyExpressMiddleware from '../lib/apply-express-middleware'
-import _debug from 'debug'
-import config from '../../config'
+import WebpackDevMiddleware from 'webpack-dev-middleware';
+import applyExpressMiddleware from '../lib/apply-express-middleware';
+import _debug from 'debug';
+import config from '../../config';
 
-const paths = config.utils_paths
-const debug = _debug('app:server:webpack-dev')
+const paths = config.utils_paths;
+const debug = _debug('app:server:webpack-dev');
 
 export default function (compiler, publicPath) {
-  debug('Enable webpack dev middleware.')
+  debug('Enable webpack dev middleware.');
 
   const middleware = WebpackDevMiddleware(compiler, {
     publicPath,
@@ -17,21 +17,21 @@ export default function (compiler, publicPath) {
     noInfo: config.compiler_quiet,
     lazy: false,
     stats: config.compiler_stats
-  })
+  });
 
   return function * (next) {
-    let ctx = this
-    let req = this.req
+    let ctx = this;
+    let req = this.req;
 
     let runNext = yield applyExpressMiddleware(middleware, req, {
       end: (content) => ctx.body = content,
       setHeader: function () {
-        ctx.set.apply(ctx, arguments)
+        ctx.set.apply(ctx, arguments);
       }
-    })
+    });
 
     if (runNext) {
-      yield* next
+      yield* next;
     }
-  }
+  };
 }
